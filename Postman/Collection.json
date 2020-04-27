@@ -1,0 +1,715 @@
+{
+	"info": {
+		"_postman_id": "ac4c25a0-6935-488b-8368-66b9b7217b61",
+		"name": "Public SOF WebAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "Health check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/healthcheck",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"healthcheck"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c52f286d-79de-487e-89c3-bdd92f09a989",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b6e19695-1c46-443c-a3fb-9b2607f90774",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Check if  client is registered",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/client/checkifregistered/9718892236",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"checkifregistered",
+								"9718892236"
+							]
+						},
+						"description": "Required authorization_code_auth token."
+					},
+					"response": []
+				},
+				{
+					"name": "Client details (client context)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/client/details",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"details"
+							]
+						},
+						"description": "Required implicit_auth token. Parameter 1 means invoice's identifier."
+					},
+					"response": []
+				},
+				{
+					"name": "Client details (partner context)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/client/details/integration/9718892236",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"details",
+								"integration",
+								"9718892236"
+							]
+						},
+						"description": "Required implicit_auth token. Parameter 1 means invoice's identifier."
+					},
+					"response": []
+				},
+				{
+					"name": "Get client factoring general terms (OWUF)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/GeneralTerms",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"GeneralTerms"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "48ed5fc7-1f1c-419a-a286-4d34e1fda8b2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "fbf8ac5a-adb9-428f-a334-f8ee43098d1a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Invoices",
+			"item": [
+				{
+					"name": "1. Can add invoice",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/client/canAddInvoice",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"canAddInvoice"
+							]
+						},
+						"description": "Required implicit_auth token. Parameter 1 means invoice's identifier."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Add invoice draft",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"invoiceNumber\": \"FV/3/2018\",\r\n    \"invoiceRegistrationDate\": \"2019-08-01\",\r\n    \"invoiceDuePaymentDate\": \"2019-08-30\",\r\n    \"netValue\": \"500\",\r\n    \"grossValue\": \"500\",\r\n    \"partialFundingValue\": \"500\",\r\n    \"contractor\": \r\n    {\r\n        \"taxId\": 3914837934,\r\n        \"companyName\": \"Hurt Detal - Jan Kowalski\",\r\n        \"emailAddress\": \"jan@kowalski.pl\",\r\n        \"trade\": 1,\r\n        \"companyActivityType\": 2,\r\n        \"companyType\": 1,\r\n        \"firstName\": \"Jan\",\r\n        \"lastName\": \"Kowalski\",\r\n        \"telephone\": \"+48 690-432-011\",\r\n        \"companyAddress\": {\r\n        \t\"street\": \"Marszałkowska\",\r\n        \t\"streetNumber\": \"2\",\r\n        \t\"apartmentNumber\": \"\",\r\n        \t\"postCode\": \"00-000\",\r\n        \t\"city\": \"Warszawa\",\r\n        \t\"post\": \"Warszawa\",\r\n        \t\"countryId\": 1\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								"add"
+							]
+						},
+						"description": "Required implicit_auth token"
+					},
+					"response": []
+				},
+				{
+					"name": "3. Can fund invoice",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "203e6534-77a6-4027-8a57-044b5e718792",
+								"exec": [
+									"var invoiceId = 1150767770640777984;",
+									"",
+									"pm.variables.set(\"invoiceId\", invoiceId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessToken",
+									"value": "ef2da4913e4089da83bfd97ba76a7efb50a9d47d723445855bdbca5a0a424192",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/invoice/{{invoiceId}}/canFund",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								"{{invoiceId}}",
+								"canFund"
+							]
+						},
+						"description": "Required implicit_auth token. Parameter 1 means invoice's identifier."
+					},
+					"response": []
+				},
+				{
+					"name": "4. Get funding documents (required approvals)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/fundingdocuments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"fundingdocuments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Get invoice funding agreement (WOF)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/invoicedocuments/1146407216581116672/fundingagreement",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoicedocuments",
+								"1146407216581116672",
+								"fundingagreement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Send sms code for invoice accept",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"contextKey\": \"a138a101-6e23-4811-ba17-907f0d823bd3\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/smsCode/send?",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"smsCode",
+								"send"
+							],
+							"query": [
+								{
+									"key": "contextKey",
+									"value": "asdasdasdas",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7. Accept invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"smsCode\": \"73130980\",\n\t\"smsContextKey\":\"a138a101-6e23-4811-ba17-907f0d823bd3\",\n\t\"OwuAccepted\": true,\n\t\"Approvals\":[]\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice/1146407216581116672/fund",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								"1146407216581116672",
+								"fund"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8. Get invoice status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/invoice/1042082259076842240/status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								"1042082259076842240",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9. Check if invoice's scan is required",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/invoice/1146407216581116672/requirescans",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								"1146407216581116672",
+								"requirescans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10. Upload invoice's scan if required",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"invoiceId\": 0,\n\t\"scans\": [\n\t\t{\n\t\t\t\"fileName\": \"\",\n\t\t\t\"base64Content\": \"\"\n\t\t}]\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice/scans",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								"scans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "11. Get available cession types for invoice",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice/1146407216581116672/cessiontypes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								"1146407216581116672",
+								"cessiontypes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "12. Choose invoice cession type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"invoiceId\": {{invoiceId}},\n\t\"cessionTypeId\": 0,\n\t\"scans\": [\n\t\t{\n\t\t\t\"fileName\": \"\",\n\t\t\t\"base64Content\": \"\"\n\t\t}]\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/invoice/cession",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"invoice",
+								"cession"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "accessToken",
+						"value": "6f3ae60f31b9b992162530cdf49b694839a20b6ca2dc78122bd3cbe1e3b71ec1",
+						"type": "string"
+					},
+					{
+						"key": "tokenType",
+						"value": "Bearer",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4b8743fc-8376-4f7d-8b41-e3d17672c55d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "97e185d4-2141-48c8-800d-1933b7c7bc4e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Approvals",
+			"item": [
+				{
+					"name": "Get approval file by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/approval/40761317748932870",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"approval",
+								"40761317748932870"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cost Documents",
+			"item": [
+				{
+					"name": "Get client's cost documents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/costdocuments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"costdocuments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get cost document by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/costdocuments/1146392115425739520",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"costdocuments",
+								"1146392115425739520"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get cost document's file by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/costdocuments/1146392115425739520/file",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"costdocuments",
+								"1146392115425739520",
+								"file"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "accessToken",
+				"value": "59abbb1675024ebcf81da369078e08927000ef47e2c37d61344ef17dc6c09c66",
+				"type": "string"
+			},
+			{
+				"key": "tokenType",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3dea4984-0a66-48a6-b71f-5348a5817a30",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a509bdd0-6563-4b1e-b194-d377d14ad938",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

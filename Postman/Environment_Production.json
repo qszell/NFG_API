@@ -1,0 +1,34 @@
+{
+	"id": "8547d637-1823-4367-ae54-9e8feda10045",
+	"name": "Production",
+	"values": [
+		{
+			"key": "url",
+			"value": "https://api.nfg.pl",
+			"enabled": true
+		},
+		{
+			"key": "partnerId",
+			"value": "(received from NFG)",
+			"enabled": true
+		},
+		{
+			"key": "partnerSecret",
+			"value": "(received from NFG)",
+			"enabled": true
+		},
+		{
+			"key": "partnerCallbackUrl",
+			"value": "http://localhost:4200",
+			"enabled": true
+		},
+		{
+			"key": "partnerScopes",
+			"value": "(received from NFG)",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2019-09-11T14:30:13.366Z",
+	"_postman_exported_using": "Postman/7.6.0"
+}
